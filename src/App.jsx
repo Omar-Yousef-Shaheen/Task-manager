@@ -6,16 +6,21 @@ import AllTasks from "./components/AllTasks";
 import Layout from "./components/Layout";
 import ManagerContext from "./context/ManagerContext";
 
-const router = createBrowserRouter([
+const router = createBrowserRouter(
+  [
+    {
+      path: "/",
+      element: <Layout />,
+      children: [
+        { index: true, element: <AddTask /> },
+        { path: "allTask", element: <AllTasks /> },
+      ],
+    },
+  ],
   {
-    path: "/",
-    element: <Layout />,
-    children: [
-      { index: true, element: <AddTask /> },
-      { path: "allTask", element: <AllTasks /> },
-    ],
-  },
-]);
+    basename: "/Task-manager",
+  }
+);
 
 function App() {
   return (
